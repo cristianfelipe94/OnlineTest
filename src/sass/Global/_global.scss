@@ -1,0 +1,16 @@
+.content-relativeness {
+    background-color: black;
+    font-family: 'Lato', Helvetica, sans-serif;
+    font-size: 15px;
+    height: 100vh;
+    letter-spacing: 1.5px;
+    line-height: 25px;
+    overflow: hidden;
+    position: relative;
+    width: 100vw;
+}
+
+::selection {
+  background-color:#fd2d65;
+  color: white;
+}
