@@ -1,22 +1,11 @@
-@media screen and (max-width: 480px) {
-	.content-relativeness-normal {
-		font-size: 19px;
-	}
-
-	.content-relativeness-medium {
-		font-size: 21px;
-	}
-
-	.content-relativeness-large {
-		font-size: 22px;
-	}
-
+@media screen and (max-width: 768px) {
+	
 	.imgHello {
 		width: 100%;
 	}
 
 	.img-wrapper {
-		width: 70%;
+		width: 50%;
 		opacity: 1;
 		height: auto;
 	}
@@ -26,7 +15,11 @@
 	}
 
 	.sign {
-		display: none;
+		display: block;
+	}
+
+	.rotation-anim {
+		text-align: center;
 	}
 
 	.landingPageMoves {
@@ -90,38 +83,14 @@
 	}
 
 	.diploma-position {
-		height: 200px;
+		height: unset;
 	}
 
 	.landingPageMoves .sizer-style-position {
-		display: block;
+		display: none;
 	}
 
 	.sizer-style-position {
-		display: block;
-	}
-
-	.say-hello-btn::before {
-    left: 42%;
-	}
-
-	.say-hello-btn::after {
-    left: 42%;
-	}
-
-	.img-wrapper:hover .say-hello-btn::after {
-    height: 135%;
-    top: -22%;
-    left: 34.4%;
-    width: 30%;
-    right: 0;
-	}
-
-	.img-wrapper:hover .say-hello-btn::before {
-    height: 115%;
-    top: -12%;
-    left: 36.7%;
-    width: 25%;
-    right: 0;
+		display: none;
 	}
 }
