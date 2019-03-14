@@ -1,14 +1,17 @@
 
 .landing-page-wrapper {
-    background-image: linear-gradient(to bottom left,#0d1b59,#74014e);
     border-left: 2px solid black;
+    background-image: linear-gradient(to bottom left,#0d1b59,#74014e);
     color: #EFEDEE;
     height: 100vh;
     left: 0;
     position: absolute;
-    transition: 3s ease-in-out;
 		width: 100vw;
 		overflow: hidden;
+    box-shadow: inset 0px 0px 20px black;
+    will-change: left;
+    z-index: 5;
+    transition: 3s ease-in-out;
 }
 
 .landingPageMoves {
@@ -20,38 +23,25 @@
     position: absolute;
     top: 0;
     width: 25%;
-		transition: 3s ease-in-out;
+    z-index: 5;
+    transition: 3s;
 		overflow: hidden;
-    .sign {
-        display: inline-block;
-        left: -20%;
-        margin: 0 auto;
-        position: absolute;
-        text-align: center;
-        width: 100%;
-        transition: 3s ease;
-    }
-    .tabs-wrapper .lang {
-        left: 150%;
-        position: absolute;
-        transition: 3s ease;
-        width: 100%;
-    }
-    .social {
-        position: absolute;
-        right: -150%;
-        transition: 3s ease;
-    }
-    .img-wrapper {
-        left: 150%;
-        right: -150%;
-        transition: 3s ease-in-out;
-		}
-		.sizer-style-position {
-			margin: 8%;
-			border: 1px solid white;
-			transition: 3s ease-in-out;
-		}
+    box-shadow: inset 1px 0px 90px black;
+    will-change: auto;
+}
+
+.lang-opacity-delay {
+	opacity: 0;
+	position: absolute;
+	left: 0;
+	transition: 0.8s ease-in-out;
+}
+
+.social-opacity-delay {
+	opacity: 0;
+	position: absolute;
+	right: 0;
+	transition: 0.8s ease-in-out;
 }
 
 .tabs-wrapper {
@@ -60,7 +50,7 @@
     margin: 0 auto;
     position: relative;
     padding-top: 1rem;
-    transition: 3s ease-in-out;
+		transition: 0.8s ease-in-out;
 }
 
 .sign {
@@ -71,13 +61,27 @@
 		width: 50%;
     padding: 1%;
     text-align: center;
-    margin: 0 auto;
-    transition: 3s ease-in-out;
+		margin: 0 auto;
+		opacity: 1;
+    transition: 0.8s ease;
+}
+
+.sign-opacity-delay {
+	display: inline-block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 50%;
+	text-align: center;
+	margin: 0 auto;
+	opacity: 0;
+	transition: 0.8s ease-in-out;
 }
 
 .img-logo {
-    width: 70%;
-    transition: 3s ease;
+		width: 70%;
+		opacity: 1;
+    transition: 0.8s ease;
 }
 
 .lang {
@@ -86,8 +90,9 @@
     width: 100%;
     left: 0;
     padding: 1rem;
-    transition: 3s ease;
+    transition: 0.8s ease;
     z-index: 1;
+    opacity: 1;
 }
 
 .flag {
@@ -107,7 +112,8 @@
     padding: 1rem;
     z-index: 1;
     text-align: right;
-    transition: 3s ease;
+    transition: 0.8s ease;
+    opacity: 1;
 }
 
 .social-icon {
@@ -169,7 +175,7 @@
 	left: 0;
 	top: 30%;
 	margin: 0 auto;
-	transition: 4s ease-in-out;
+	transition: 4s;
 	&:hover::after {
     top: -2%;
     left: -2%;

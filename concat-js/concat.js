@@ -1,3 +1,5 @@
+// Get elements from DOM.
+// ///////////////////////
 const bodyDom = document.querySelector('body');
 const helloBtn = document.getElementById('js-img-avatar');
 const landingPage = document.getElementById('js-landingpage');
@@ -14,6 +16,10 @@ const backgroundImg = document.getElementById('js-background-img');
 const backgroundModal = document.getElementById('js-modal');
 const closeModalBtn = document.getElementById('js-close-modal');
 
+const langWrapperDisplay = document.getElementById('js-lang-wrapper');
+const socialWrapperDisplay = document.getElementById('js-social-wrapper');
+const signWrapperDisplay = document.getElementById('js-sign-wrapper');
+
 const portFolioContent = document.getElementById('js-wrapper-portfolio');
 
 const tabsDom = document.getElementsByClassName('tab-items');
@@ -22,7 +28,10 @@ const activityContentBlock = document.getElementById('js-activity-list');
 
 const btnSizer = document.getElementById('js-btn-size');
 const sizeName = document.getElementById('js-size-name');
+// ///////////////////////
 
+// Small libraries.
+// /////////////////
 function hiddingElements(elementsToBeHide) {
 	elementsToBeHide.className = 'content-page-hidden';
 }
@@ -73,7 +82,10 @@ btnSizer.addEventListener('click', () => {
 		}
 	}
 });
+// /////////////////
 
+// Github response information generator.
+// //////////////////////////////////////
 const maxResponse = 10;
 const request = new XMLHttpRequest();
 
@@ -144,20 +156,41 @@ const searchUrl = 'https://api.github.com/users/cristianfelipe94/events';
 request.open('GET', searchUrl);
 // Sent the Request.
 request.send();
+// //////////////////////////////////////
 
-helloBtn.addEventListener('click', function () {
+// Close and Open animator.
+// ////////////////////////
+helloBtn.addEventListener('click', (() => {
 	statusSize = 0;
-	sizeName.innerText = '';
-	btnClose.setAttribute('class', 'btnAction-showing');
-	landingPage.setAttribute('class', 'landingPageMoves');
-	for (const e of VerticalTabs) {
-		e.setAttribute('class', 'tabs-info-wrapper-showing');
-	}
-	backgroundImg.setAttribute('class', 'background-img-showing');
-	showingElements(homeContentBlock);
-});
+  sizeName.innerText = '';
 
-btnClose.addEventListener('click', function () {
+	langWrapperDisplay.setAttribute('class', 'lang-opacity-delay');
+  socialWrapperDisplay.setAttribute('class', 'social-opacity-delay');
+
+  backgroundImg.setAttribute('class', 'background-img-showing');
+
+	const signatureLogoDelay = (() => {
+		signWrapperDisplay.setAttribute('class', 'sign-opacity-delay');
+  });
+  setTimeout(signatureLogoDelay, 1000);
+
+  const landingPageDelay = (() => {
+    landingPage.setAttribute('class', 'landingPageMoves');
+  });
+  setTimeout(landingPageDelay, 3000);
+
+  const contentInfoDelay = (() => {
+    showingElements(homeContentBlock);
+  });
+  setTimeout(contentInfoDelay, 5000);
+
+  const btnCloseDelay = (() => {
+    btnClose.setAttribute('class', 'btnAction-showing');
+  });
+  setTimeout(btnCloseDelay, 7000);
+}));
+
+btnClose.addEventListener('click', (() => {
 	statusSize = 1;
 	if (counterSize === 0) {
 		sizeName.innerText = 'Letra pequeña.';
@@ -165,23 +198,38 @@ btnClose.addEventListener('click', function () {
 		sizeName.innerText = 'Letra mediana.';
 	} else if (counterSize === 2) {
 		sizeName.innerText = 'Letra larga.';
-	}
-	btnClose.setAttribute('class', 'btnAction-hidden');
-	landingPage.setAttribute('class', 'landing-page-wrapper');
-	for (const e of VerticalTabs) {
-			e.setAttribute('class', 'tabs-info-wrapper-hidden');
-	};
+  }
 
-	tabsArray.forEach(element => {
-		for (const i of element) {
-			if (i.className === 'content-page-showing') {
-				hiddingElements(i);
-			}
-		}
-	});
-	backgroundImg.setAttribute('class', 'background-img-hidden');
-});
+  btnClose.setAttribute('class', 'btnAction-hidden');
 
+  const contentInfoDelay = (() => {
+    tabsArray.forEach((element) => {
+      for (const i of element) {
+        if (i.className === 'content-page-showing') {
+          hiddingElements(i);
+        }
+      }
+    });
+  });
+  setTimeout(contentInfoDelay, 1000);
+
+  const landingPageDelay = (() => {
+    landingPage.setAttribute('class', 'landing-page-wrapper');
+  });
+  setTimeout(landingPageDelay, 4000);
+  
+  const backgroundHiddenDelay = (() => {
+    langWrapperDisplay.setAttribute('class', 'lang');
+    socialWrapperDisplay.setAttribute('class', 'social');
+    signWrapperDisplay.setAttribute('class', 'sign');
+    backgroundImg.setAttribute('class', 'background-img-hidden');
+  });
+  setTimeout(backgroundHiddenDelay, 8000);
+}));
+// ////////////////////////
+
+// Background image generator.
+// ///////////////////////////
 const imgBackground = [
 	'img/background/ambar.jpg',
 	'img/background/ann.jpg',
@@ -200,9 +248,11 @@ function loadBackgroundImg() {
 	const indexBackground = generateRandomNumb(imgBackground.length);
 	backgroundImg.setAttribute('src', imgBackground[indexBackground]);
 }
-
 window.addEventListener('load', loadBackgroundImg);
+// ///////////////////////////
 
+//  Setter path for tabs and them content.
+// //////////////////////////////////////
 const tabsArray = [];
 function tab(selector) {
 	const elements = selector;
@@ -229,7 +279,10 @@ function tab(selector) {
 	}
 }
 tab(VerticalTabs);
+// //////////////////////////////////////
 
+// Porfolio projects generator.
+// ////////////////////////////
 const imgPortArray = [
 	imgPort1 = {
 		src: '../img/canvas_game_port1.jpg',
@@ -313,7 +366,10 @@ imgPortArray.forEach((element) => {
 closeModalBtn.addEventListener('click', function () {
 	backgroundModal.setAttribute('class', 'modal-content-hide');
 });
+// ////////////////////////////
 
+// Diploma elements generator.
+// ///////////////////////////
 const diplomaContent = [
 	diploma1 = {
 		src: 'img/diploma.png',
@@ -376,3 +432,4 @@ diplomaContent.forEach((element) => {
 
 	educationContentBlock.appendChild(elementListItem);
 });
+// ///////////////////////////
